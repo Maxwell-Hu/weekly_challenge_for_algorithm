@@ -23,3 +23,19 @@ class Solution:
                 else:
                     left += 1
         return res
+
+class Solution:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        res = []
+        for i, v1 in enumerate(nums[:-2]):
+            if v1 > 0: break
+            if i>0 and nums[i] == nums[i-1]: continue
+            lookup = set()
+            tmp = set()
+            for j, v2 in enumerate(nums[i+1:]):
+                if -v1 - v2 in lookup:
+                    tmp.add((v1, -v1-v2, v2))
+                lookup.add(v2)
+            res.extend(tmp)
+        return list(map(list, res))
