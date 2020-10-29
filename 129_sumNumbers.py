@@ -26,3 +26,13 @@ class Solution:
         getPath(root, [])
         print(nums)
         return sum([getNum(x) for x in nums])
+
+class Solution:
+    def sumNumbers(self, root: TreeNode) -> int:
+        def getSum(root, s):
+            if not root: return 0
+            new_s = s * 10 + root.val
+            if not root.left and not root.right:
+                return new_s
+            return getSum(root.left, new_s) + getSum(root.right, new_s)
+        return getSum(root, 0)
