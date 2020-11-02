@@ -1,9 +1,10 @@
+from typing import List
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         if not len(matrix): return []
         boarder = [0, len(matrix[0])-1, len(matrix)-1, 0]
         res = []
-        while boarder[0] <= boarder[2] and boarder[1] >= boarder[3]:
+        while True:
             res += [matrix[boarder[0]][i] for i in range(boarder[3], boarder[1]+1)]
             boarder[0] += 1
             if boarder[0] > boarder[2]: break
