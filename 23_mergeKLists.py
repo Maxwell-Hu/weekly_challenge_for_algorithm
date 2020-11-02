@@ -23,3 +23,22 @@ class Solution:
             q.next = None
             p = q
         return headNode.next
+
+
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        q = []
+        head = ListNode()
+        p = head
+        for i in range(len(lists)):
+            if lists[i]:
+                heapq.heappush(q, (lists[i].val,i))
+                lists[i] = lists[i].next
+        while q:
+            x, idx = heapq.heappop(q)
+            p.next = ListNode(x)
+            p = p.next
+            if lists[idx]:
+                heapq.heappush(q, (lists[idx].val, idx))
+                lists[idx] = lists[idx].next
+        return head.next
