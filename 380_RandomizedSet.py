@@ -1,3 +1,4 @@
+import random
 class RandomizedSet:
 
     def __init__(self):
@@ -6,7 +7,6 @@ class RandomizedSet:
         """
         self.x = dict()
         self.l = list()
-
 
 
     def insert(self, val: int) -> bool:

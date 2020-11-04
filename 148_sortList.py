@@ -18,3 +18,26 @@ class Solution:
             h = h.next
         h.next = left if left else right
         return res.next
+
+
+class Solution:
+    def sortList(self, head: ListNode) -> ListNode:
+        if not head or not head.next: return head
+        slow, fast = head, head
+        while fast.next and fast.next.next:
+            slow, fast = slow.next, fast.next.next
+        mid, slow.next = slow.next, None
+        left, right = self.sortList(head), self.sortList(mid)
+        h = ListNode()
+        p = h
+        while left and right:
+            if left.val < right.val:
+                p.next = left
+                p = p.next
+                left = left.next
+            else:
+                p.next = right
+                p = p.next
+                right = right.next
+        p.next = left if left else right
+        return h.next
