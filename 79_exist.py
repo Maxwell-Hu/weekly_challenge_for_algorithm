@@ -1,3 +1,4 @@
+from typing import List
 class Solution:
     def __init__(self):
         self.directions = [(0, -1), (-1, 0), (0, 1), (1, 0)]
