@@ -25,3 +25,18 @@ public:
         postOrder(root->left);
     }
 };
+
+class Solution {
+public:
+    int curSum = 0;
+    
+    TreeNode* convertBST(TreeNode* root) {
+        if (root){
+            convertBST(root->right);
+            curSum += root->val;
+            root->val = curSum;
+            convertBST(root->left);
+        }
+        return root;
+    }
+};
